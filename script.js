@@ -2,10 +2,15 @@ const boxes = document.querySelectorAll(".box");
 const gameInfo = document.querySelector(".game-info");
 const newGameButton = document.querySelector(".newGame");
 const resetGameButton = document.querySelector(".resetGame");
+const playerXElement = document.getElementById('playerX');
+const playerOElement = document.getElementById('playerO');
+const matchTie = document.getElementById('TieMatch');
 
 let currentPlayer;
 let gameGrid;
-
+let playerXScore = 0;
+let playerOScore = 0;
+let tieScore = 0;
 // All possible combinations for winning
 const winningPostions = [
     [0, 1, 2],
@@ -61,6 +66,10 @@ function checkGameOver() {
 
     if(answer !== "") {
         gameInfo.innerText = `Winner Player - ${answer}`;
+       
+        answer === 'X' ? playerXScore++ : playerOScore++;
+        updateScore();
+
         resetGameButton.classList.remove("active");
         newGameButton.classList.add("active");
         return;
@@ -76,6 +85,8 @@ function checkGameOver() {
 
     if(fillCount === 9) {
         gameInfo.innerText = "Game Tied !";
+        tieScore++;
+        updateScore();
         resetGameButton.classList.remove("active");
         newGameButton.classList.add("active");
     }
@@ -110,3 +121,9 @@ boxes.forEach((box, index) => {
 
 newGameButton.addEventListener("click", initGame);
 resetGameButton.addEventListener("click", initGame);
+
+function updateScore() {
+    playerXElement.textContent = `Player X: ${playerXScore}`;
+    matchTie.textContent = `Tie : ${tieScore}`;
+    playerOElement.textContent = `Player O: ${playerOScore}`;
+}

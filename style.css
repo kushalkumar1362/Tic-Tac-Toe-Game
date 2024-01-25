@@ -75,7 +75,7 @@ body {
 .btn{
   color: white;
   position: absolute;
-  bottom: 3rem;
+  bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -97,4 +97,22 @@ body {
 
 .win {
   background-color: rgba(0, 255, 0, 0.3);
+}
+
+#scoreboard {
+  display: flex;
+  color: white;
+  position: absolute;
+  bottom: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.3rem 0.5rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+}
+
+#scoreboard div {
+  margin: 0 16px;
 }
